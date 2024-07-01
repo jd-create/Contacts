@@ -42,6 +42,17 @@ public partial class EditContactPage : ContentPage
             return;
         }
 
+        if (emailValidator.IsNotValid) 
+        {
+            foreach(var error in emailValidator.Errors)
+            {
+                DisplayAlert("Error", error.ToString(),"OK");
+            }
+
+           return;
+        }
+
+        //error.ToString()
         contact.Name = entryName.Text;
         contact.Email = entryEmail.Text;
         contact.Phone = entryPhone.Text;

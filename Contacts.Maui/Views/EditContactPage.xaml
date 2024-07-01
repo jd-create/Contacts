@@ -26,7 +26,21 @@
             <HorizontalStackLayout>
                 <Label Text="Email" VerticalOptions="Center" WidthRequest="60"></Label>
                 <Entry x:Name="entryEmail" VerticalOptions="Center">
-                    
+                    <Entry.Behaviors>
+                        <toolkit:MultiValidationBehavior
+                            x:Name="emailValidator"
+                            Flags="ValidateOnAttaching,ValidateOnValueChanged">
+                            <toolkit:TextValidationBehavior
+                                Flags="ValidateOnAttaching,ValidateOnValueChanged"
+                                MinimumLength="1"
+                                toolkit:MultiValidationBehavior.Error="Email is required."
+                             />
+                            <toolkit:EmailValidationBehavior
+                                Flags="ValidateOnAttaching,ValidateOnValueChanged"
+                                toolkit:MultiValidationBehavior.Error="Email format is invalid."
+                             />
+                        </toolkit:MultiValidationBehavior>
+                    </Entry.Behaviors>
                 </Entry>
             </HorizontalStackLayout>
         </Frame>
