@@ -20,45 +20,33 @@ public partial class EditContactPage : ContentPage
             contact = ContactRepository.GetContactById(int.Parse(value));
             if (contact != null)
             {
-                entryName.Text = contact.Name;
-                entryEmail.Text = contact.Email;
-                entryPhone.Text = contact.Phone;
-                entryAddress.Text = contact.Adress;
+                contactCtrl.Name = contact.Name;
+                contactCtrl.Email = contact.Email;
+                contactCtrl.Phone = contact.Phone;
+                contactCtrl.Address = contact.Adress;
             }
         }
 
     }
-
-    private void btnCancel_Clicked_1(object sender, EventArgs e)
-    {
-        Shell.Current.GoToAsync("..");
-    }
-
     private void btnUpdate_Clicked(object sender, EventArgs e)
     {
-        if(nameValidator.IsNotValid)
-        {
-            DisplayAlert("Error", "Name is required.", "OK");
-            return;
-        }
 
-        if (emailValidator.IsNotValid) 
-        {
-            foreach(var error in emailValidator.Errors)
-            {
-                DisplayAlert("Error", error.ToString(),"OK");
-            }
-
-           return;
-        }
-
-        //error.ToString()
-        contact.Name = entryName.Text;
-        contact.Email = entryEmail.Text;
-        contact.Phone = entryPhone.Text;
-        contact.Adress = entryAddress.Text;
+        contact.Name = contactCtrl.Name;
+        contact.Email = contactCtrl.Email;
+        contact.Phone = contactCtrl.Phone;
+        contact.Adress = contactCtrl.Address;
 
         ContactRepository.UpdateContact(contact.ContactId, contact);
         Shell.Current.GoToAsync("..");
+    }
+
+    private void btnCancel_Clicked(object sender, EventArgs e)
+    {
+        Shell.Current.GoToAsync("..");
+    }
+
+    private void contactCtrl_OnError(object sender, string e)
+    {
+        DisplayAlert("Error", e, "OK");
     }
 }
