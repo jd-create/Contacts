@@ -25,7 +25,7 @@ namespace Contacts.Maui.Models
                 return new Contact
                 {
                     ContactId = contact.ContactId,
-                    Adress = contact.Adress,
+                    Address = contact.Address,
                     Email = contact.Email,
                     Name = contact.Name,
                     Phone = contact.Phone,
@@ -43,12 +43,18 @@ namespace Contacts.Maui.Models
             if (contactToUpdate != null)
             {
                 //AutoMapper
-                contactToUpdate.Adress = contact.Adress;
+                contactToUpdate.Address = contact.Address;
                 contactToUpdate.Name = contact.Name;
                 contactToUpdate.Email = contact.Email;
                 contactToUpdate.Phone = contact.Phone;
 
             }
+        }
+        public static void AddContact(Contact contact) 
+        {
+            var maxId= _contacts.Max(x => x.ContactId);
+            contact.ContactId = maxId + 1;
+            _contacts.Add(contact);
         }
     }
 }

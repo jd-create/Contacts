@@ -23,7 +23,7 @@ public partial class EditContactPage : ContentPage
                 contactCtrl.Name = contact.Name;
                 contactCtrl.Email = contact.Email;
                 contactCtrl.Phone = contact.Phone;
-                contactCtrl.Address = contact.Adress;
+                contactCtrl.Address = contact.Address;
             }
         }
 
@@ -34,7 +34,7 @@ public partial class EditContactPage : ContentPage
         contact.Name = contactCtrl.Name;
         contact.Email = contactCtrl.Email;
         contact.Phone = contactCtrl.Phone;
-        contact.Adress = contactCtrl.Address;
+        contact.Address = contactCtrl.Address;
 
         ContactRepository.UpdateContact(contact.ContactId, contact);
         Shell.Current.GoToAsync("..");
