@@ -3,7 +3,7 @@ namespace Contacts.Maui.Views;
 using Contacts.Maui.Models;
 using Contacts.UseCases.Interfaces;
 using System.Collections.ObjectModel;
-using Contact = Contacts.CoreBusiness.Contact;
+using Contact = Contacts.CoreBusiness.Contact; 
 
 public partial class ContactsPage : ContentPage
 {
@@ -69,5 +69,8 @@ public partial class ContactsPage : ContentPage
         listContacts.ItemsSource = contacts;
     }
 
-    
+    private void btnTest_Clicked(object sender, EventArgs e)
+    {
+        Shell.Current.GoToAsync(nameof(TestPage1));
+    }
 }
