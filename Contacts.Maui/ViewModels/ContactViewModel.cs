@@ -1,18 +1,15 @@
-﻿using Contacts.Maui.Models;
-using CommunityToolkit.Mvvm.ComponentModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Contact = Contacts.Maui.Models.Contact;
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Contact = Contacts.CoreBusiness.Contact;
+using Contacts.UseCases.Interfaces;
 
 namespace Contacts.Maui.ViewModels
 {
     public partial class ContactViewModel : ObservableObject
     {
         private Contact contact;
+        private readonly IViewContactUseCase viewContactUseCase;
+        private readonly IEditContactUseCase editContactUseCase;
+
         public Contact Contact 
         { 
             get => contact;
@@ -22,22 +19,23 @@ namespace Contacts.Maui.ViewModels
             }
         }
 
-        public ContactViewModel()
+        public ContactViewModel(IViewContactUseCase viewContactUseCase)
         {
            this.Contact = new Contact();
+           this.viewContactUseCase = viewContactUseCase;
         }
 
-        public void LoadContact(int contactId)
+        public async Task LoadContact(int contactId)
         {
-            this.Contact = ContactRepository.GetContactById(contactId);
+            this.Contact = await this.viewContactUseCase.ExecuteAsync(contactId);
         }
 
-        [RelayCommand]
-        public void SaveContact()
-        {
-            ContactRepository.UpdateContact(
-                this.Contact.ContactId, 
-                this.Contact);
-        }
+        //[RelayCommand]
+        //public void SaveContact()
+        //{
+        //    ContactRepository.UpdateContact(
+        //        this.Contact.ContactId, 
+        //        this.Contact);
+        //}
     }
 }

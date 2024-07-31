@@ -1,4 +1,5 @@
 using Contacts.Maui.ViewModels;
+
 namespace Contacts.Maui.Views_MVVM;
 
 public partial class Contacts_MVVM_Page : ContentPage
