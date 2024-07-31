@@ -1,15 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Contacts.Maui.Views;
 using Contacts.Maui.Views_MVVM;
-using Contacts.UseCases;
 using Contacts.UseCases.Interfaces;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Contact = Contacts.CoreBusiness.Contact;
 
 namespace Contacts.Maui.ViewModels
