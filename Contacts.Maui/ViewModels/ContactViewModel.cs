@@ -1,6 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Contact = Contacts.CoreBusiness.Contact;
 using Contacts.UseCases.Interfaces;
+using Contacts.Maui.Views_MVVM;
+
 
 namespace Contacts.Maui.ViewModels
 {
@@ -19,10 +22,13 @@ namespace Contacts.Maui.ViewModels
             }
         }
 
-        public ContactViewModel(IViewContactUseCase viewContactUseCase)
+        public ContactViewModel(
+            IViewContactUseCase viewContactUseCase,
+            IEditContactUseCase editContactUseCase)
         {
            this.Contact = new Contact();
            this.viewContactUseCase = viewContactUseCase;
+           this.editContactUseCase = editContactUseCase;
         }
 
         public async Task LoadContact(int contactId)
@@ -30,12 +36,17 @@ namespace Contacts.Maui.ViewModels
             this.Contact = await this.viewContactUseCase.ExecuteAsync(contactId);
         }
 
-        //[RelayCommand]
-        //public void SaveContact()
-        //{
-        //    ContactRepository.UpdateContact(
-        //        this.Contact.ContactId, 
-        //        this.Contact);
-        //}
+        [RelayCommand]
+        public async Task Editcontact()
+        {
+            await this.editContactUseCase.ExecuteAsync(this.Contact.ContactId, this.contact);
+            await Shell.Current.GoToAsync($"{nameof(Contacts_MVVM_Page)}");
+        }
+        [RelayCommand]
+
+        public async Task BackToContacts()
+        {
+            await Shell.Current.GoToAsync($"{nameof(Contacts_MVVM_Page)}");
+        }
     }
 }
