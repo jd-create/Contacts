@@ -53,12 +53,10 @@
         <Frame Padding="10,2,10,2">
             <HorizontalStackLayout>
                 <Label Text="Address" VerticalOptions="Center" WidthRequest="60"></Label>
-                <Entry VerticalOptions="Center" Text="{Binding Contact.Address}">
-
-                </Entry>
+                <Entry VerticalOptions="Center" Text="{Binding Contact.Address}"></Entry>
             </HorizontalStackLayout>
         </Frame>
-        <Button x:Name="btnSave" Text="Save" Command="{Binding EditcontactCommand}" ></Button>
-        <Button x:Name="btnCancel" Text="Cancel" Command="{Binding BackToContactsCommand }"></Button>
+        <Button x:Name="btnSave" Text="Save"></Button>
+        <Button Text="Cancel" Command="{Binding BackToContactsCommand}"></Button>
     </VerticalStackLayout>
 </ContentView>

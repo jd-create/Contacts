@@ -7,5 +7,6 @@
     <controls:ContactControl x:Name="contactCtrl"
                         OnSave="contactCtrl_OnSave"
                         OnCancel="contactCtrl_OnCancel"
-                        OnError="contactCtrl_OnError"></controls:ContactControl>
+                        OnError="contactCtrl_OnError">        
+    </controls:ContactControl>
 </ContentPage>

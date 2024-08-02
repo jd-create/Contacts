@@ -47,5 +47,12 @@ namespace Contacts.Maui.ViewModels
         {
             await Shell.Current.GoToAsync($"{nameof(EditContactPage_MVVM)}?Id={contactId}");
         }
+
+        [RelayCommand]
+
+        public async Task GotoAddContact()
+        {
+            await Shell.Current.GoToAsync(nameof(AddContactPage_MVVM));
+        }
     }
 }
