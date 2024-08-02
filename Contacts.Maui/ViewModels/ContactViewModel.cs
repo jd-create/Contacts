@@ -14,23 +14,27 @@ namespace Contacts.Maui.ViewModels
         private readonly IEditContactUseCase editContactUseCase;
         private readonly IAddContactUseCase addContactUseCase;
 
-        public Contact Contact 
-        { 
+        public Contact Contact
+        {
             get => contact;
-            set 
+            set
             {
                 SetProperty(ref contact, value);
             }
         }
+
+        public bool IsNameProvided { get; set; }
+        public bool IsEmailProvided { get; set; }
+        public bool IsEmailFormatValid { get; set; }
 
         public ContactViewModel(
             IViewContactUseCase viewContactUseCase,
             IEditContactUseCase editContactUseCase,
             IAddContactUseCase addContactUseCase)
         {
-           this.Contact = new Contact();
-           this.viewContactUseCase = viewContactUseCase;
-           this.editContactUseCase = editContactUseCase;
+            this.Contact = new Contact();
+            this.viewContactUseCase = viewContactUseCase;
+            this.editContactUseCase = editContactUseCase;
             this.addContactUseCase = addContactUseCase;
         }
 
@@ -42,15 +46,22 @@ namespace Contacts.Maui.ViewModels
         [RelayCommand]
         public async Task EditContact()
         {
-            await this.editContactUseCase.ExecuteAsync(this.contact.ContactId, this.contact);
-            await Shell.Current.GoToAsync($"{nameof(Contacts_MVVM_Page)}");
+            if (await ValidateContact())
+            {
+                await this.editContactUseCase.ExecuteAsync(this.contact.ContactId, this.contact);
+                await Shell.Current.GoToAsync($"{nameof(Contacts_MVVM_Page)}");
+            }
+            
         }
 
         [RelayCommand]
         public async Task AddContact()
         {
-            await this.addContactUseCase.ExecuteAsync(this.contact);
-            await Shell.Current.GoToAsync($"{nameof(Contacts_MVVM_Page)}");
+            if (await ValidateContact())
+            {
+                await this.addContactUseCase.ExecuteAsync(this.contact);
+                await Shell.Current.GoToAsync($"{nameof(Contacts_MVVM_Page)}");
+            }
         }
 
         [RelayCommand]
@@ -59,5 +70,29 @@ namespace Contacts.Maui.ViewModels
         {
             await Shell.Current.GoToAsync($"{nameof(Contacts_MVVM_Page)}");
         }
+
+        private async Task<bool> ValidateContact()
+        {
+            if (!this.IsNameProvided)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "Name is required.", "OK");
+                return false;
+            }
+
+            if (!this.IsEmailProvided)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "Email is required.", "OK");
+                return false;
+            }
+
+            if (!this.IsEmailFormatValid)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "Email format is incorrect.", "OK");
+                return false;
+            }
+            return true;
+        }
+
     }
+
 }

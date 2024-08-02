@@ -15,6 +15,7 @@
                      x:Name="nameValidator"
                      Flags="ValidateOnAttaching,ValidateOnValueChanged"
                      MinimumLength="1"
+                            IsValid="{Binding IsNameProvided}"
                      />
                     </Entry.Behaviors>
                 </Entry>
@@ -31,11 +32,13 @@
                             <toolkit:TextValidationBehavior
                          Flags="ValidateOnAttaching,ValidateOnValueChanged"
                          MinimumLength="1"
+                                IsValid="{Binding IsEmailProvided}"
                          toolkit:MultiValidationBehavior.Error="Email is required."
                       />
                             <toolkit:EmailValidationBehavior
                          Flags="ValidateOnAttaching,ValidateOnValueChanged"
                          toolkit:MultiValidationBehavior.Error="Email format is invalid."
+                                IsValid="{Binding IsEmailFormatValid}"
                       />
                         </toolkit:MultiValidationBehavior>
                     </Entry.Behaviors>
