@@ -23,11 +23,13 @@ namespace Contacts.Maui.ViewModels
             this.Contacts = new ObservableCollection<Contact>();
         }
 
-        public async Task LoadContactsAsync()
+
+
+        public async Task LoadContactsAsync(string filterText = null)
         {
             this.Contacts.Clear();
 
-            var contacts = await viewContactsUseCase.ExecuteAsync(null);
+            var contacts = await viewContactsUseCase.ExecuteAsync(filterText);
             if (contacts != null && contacts.Count > 0)
             {
                 foreach (var contact in contacts)
@@ -53,6 +55,13 @@ namespace Contacts.Maui.ViewModels
         public async Task GotoAddContact()
         {
             await Shell.Current.GoToAsync(nameof(AddContactPage_MVVM));
+        }
+
+        [RelayCommand]
+
+        public async Task PerformSearch(string filterText)
+        {
+            await LoadContactsAsync(filterText);
         }
     }
 }
