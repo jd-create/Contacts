@@ -5,13 +5,15 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contacts.Maui", "Contacts.Maui\Contacts.Maui.csproj", "{1DA1C347-F82A-4038-B2F3-78994D6F59EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contacts.CoreBusiness", "Contacts.CoreBusiness\Contacts.CoreBusiness.csproj", "{29A90BBC-037B-4181-862D-1AFFAB06BD8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contacts.CoreBusiness", "Contacts.CoreBusiness\Contacts.CoreBusiness.csproj", "{29A90BBC-037B-4181-862D-1AFFAB06BD8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contacts.UseCases", "Contacts.UseCases\Contacts.UseCases.csproj", "{27CDF2C4-4EBA-4226-AEF2-5DB7AE063DD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contacts.UseCases", "Contacts.UseCases\Contacts.UseCases.csproj", "{27CDF2C4-4EBA-4226-AEF2-5DB7AE063DD0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{5D346DBB-EC1A-488D-AA29-588F13217FDF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contacts.Plugins.DataStore.InMemory", "Plugins\Contacts.Plugins.DataStore.InMemory\Contacts.Plugins.DataStore.InMemory.csproj", "{91085676-B105-46BB-8A11-033551A8E9D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contacts.Plugins.DataStore.InMemory", "Plugins\Contacts.Plugins.DataStore.InMemory\Contacts.Plugins.DataStore.InMemory.csproj", "{91085676-B105-46BB-8A11-033551A8E9D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contacts.Plugins.DataStore.SQLLite", "Plugins\Contacts.Plugins.DataStore.SQLLite\Contacts.Plugins.DataStore.SQLLite.csproj", "{7A4D43DB-B231-4288-B653-1CC82B21A17D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,12 +39,17 @@ Global
 		{91085676-B105-46BB-8A11-033551A8E9D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91085676-B105-46BB-8A11-033551A8E9D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91085676-B105-46BB-8A11-033551A8E9D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A4D43DB-B231-4288-B653-1CC82B21A17D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A4D43DB-B231-4288-B653-1CC82B21A17D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A4D43DB-B231-4288-B653-1CC82B21A17D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A4D43DB-B231-4288-B653-1CC82B21A17D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{91085676-B105-46BB-8A11-033551A8E9D4} = {5D346DBB-EC1A-488D-AA29-588F13217FDF}
+		{7A4D43DB-B231-4288-B653-1CC82B21A17D} = {5D346DBB-EC1A-488D-AA29-588F13217FDF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {231D1D82-799A-4C72-9AD0-F3788666C695}
